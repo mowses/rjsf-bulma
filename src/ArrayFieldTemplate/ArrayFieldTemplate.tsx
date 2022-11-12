@@ -1,10 +1,10 @@
 import React from 'react';
 import { utils } from '@rjsf/core';
 import { ArrayFieldTemplateProps, IdSchema } from '@rjsf/core';
-import Box from 'react-bulma-components/lib/components/box';
-import Button from 'react-bulma-components/lib/components/button';
-import Columns from 'react-bulma-components/lib/components/columns';
-import Element from 'react-bulma-components/lib/components/element';
+import Box from 'react-bulma-components/src/components/box';
+import Button from 'react-bulma-components/src/components/button';
+import Columns from 'react-bulma-components/src/components/columns';
+import Element from 'react-bulma-components/src/components/element';
 import AddButton from '../AddButton/AddButton';
 import IconButton from '../IconButton/IconButton';
 
@@ -80,7 +80,7 @@ const DefaultArrayItem = (props: any) => {
       
       {props.hasToolbar && (
         <Columns.Column className="array-item-toolbox">
-            <Button.Group hasAddons={ true } position="right">
+            <Button.Group hasAddons={ true } align="right">
               {(props.hasMoveUp || props.hasMoveDown) && (
                 <IconButton
                   icon="arrow-up"

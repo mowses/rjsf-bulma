@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Form from 'react-bulma-components/lib/components/form';
+import Form from 'react-bulma-components/src/components/form';
 
 // Check to see if a schema specifies that a value must be true
 function schemaRequiresTrueValue(schema) {

@@ -1,6 +1,6 @@
 import React from "react";
-import { WidgetProps } from "@rjsf/core";
-import Form from 'react-bulma-components/lib/components/form';
+import {WidgetProps} from "@rjsf/core";
+import Form from 'react-bulma-components/src/components/form';
 
 const RadioWidget = ({
   id,
@@ -16,13 +16,9 @@ const RadioWidget = ({
 }: WidgetProps) => {
   const { enumOptions, enumDisabled } = options;
 
-  const _onChange = ({}, value: any) =>
-    onChange(schema.type == "boolean" ? value !== "false" : value);
-  const _onBlur = ({ target: { value } }: React.FocusEvent<HTMLInputElement>) =>
-    onBlur(id, value);
-  const _onFocus = ({
-    target: { value },
-  }: React.FocusEvent<HTMLInputElement>) => onFocus(id, value);
+  const _onChange = ({ target: { value }}: React.FocusEvent<HTMLInputElement>) => onChange(schema.type == "boolean" ? value !== "false" : value);
+  const _onBlur = ({ target: { value }}: React.FocusEvent<HTMLInputElement>) => onBlur(id, value);
+  const _onFocus = ({target: { value }}: React.FocusEvent<HTMLInputElement>) => onFocus(id, value);
 
   const row = options ? options.inline : false;
 
@@ -34,12 +30,12 @@ const RadioWidget = ({
 
       <Form.Field
         kind="group"
-        horizontal={row}>
+        horizontal={!!row}>
         {(enumOptions as any).map((option: any, i: number) => {
           const itemDisabled =
             enumDisabled && (enumDisabled as any).indexOf(option.value) != -1;
 
-          const radio = (
+          return (
             <Form.Label htmlFor={`${id}_${i}`}>
               <Form.Radio
                 key={i}
@@ -52,8 +48,6 @@ const RadioWidget = ({
               {option.label}
             </Form.Label>
           );
-
-          return radio;
         })}
       </Form.Field>
     </>

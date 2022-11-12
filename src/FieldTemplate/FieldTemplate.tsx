@@ -1,17 +1,17 @@
 import React from "react";
 import { FieldTemplateProps } from "@rjsf/core";
-import Form from 'react-bulma-components/lib/components/form';
-import List from 'react-bulma-components/lib/components/list';
-import Notification from 'react-bulma-components/lib/components/notification';
+import Form from 'react-bulma-components/src/components/form';
+import Content from 'react-bulma-components/src/components/content';
+import Notification from 'react-bulma-components/src/components/notification';
 
 const FieldErrorListTemplate = (errors: any) => {
   if (!errors || !errors.length) return null;
 
-  return <List renderAs="ul" className="error-list-field">
+  return <Content renderAs="ul" className="error-list-field">
     {errors.map( (error: any, index: number) => (
       <Notification renderAs="li" key={index}>{error}</Notification>
     ))}
-  </List>
+  </Content>
 };
 
 const FieldIsBool = (schema: any, uiSchema: any): boolean => {
@@ -45,7 +45,7 @@ const FieldTemplate = ({
   return (
     <Form.Field className={classnames}>
       {displayLabel && label ? (
-        <Form.Label htmlFor={FieldIsBool(schema, uiSchema) ? null : id}>{label}</Form.Label>
+        <Form.Label htmlFor={FieldIsBool(schema, uiSchema) ? undefined : id}>{label}</Form.Label>
       ) : null}
       {description}
       

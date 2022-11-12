@@ -1,6 +1,6 @@
 import React from "react";
 import { WidgetProps } from "@rjsf/core";
-import Form from 'react-bulma-components/lib/components/form';
+import Form from 'react-bulma-components/src/components/form';
 
 const { Input } = Form;
 
@@ -17,7 +17,7 @@ const PasswordWidget = ({
   options,
   autofocus,
   schema,
-  rawErrors = [],
+  //rawErrors = [],
 }: WidgetProps) => {
   const _onChange = ({
     target: { value },
@@ -33,12 +33,12 @@ const PasswordWidget = ({
     <Input
       type="password"
       id={id}
-      label={label || schema.title}
+      aria-label={label || schema.title}
       autoFocus={autofocus}
       required={required}
       disabled={disabled || readonly}
       value={value ? value : ""}
-      error={rawErrors.length > 0}
+      //error={rawErrors.length > 0}
       onFocus={_onFocus}
       onBlur={_onBlur}
       onChange={_onChange}

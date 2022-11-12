@@ -1,16 +1,16 @@
 import React from "react";
 import ArrayFieldTemplate from "../ArrayFieldTemplate";
 import ErrorList from "../ErrorList";
-import Fields from "../Fields";
+//import Fields from "../Fields";
 import FieldTemplate from "../FieldTemplate";
 import ObjectFieldTemplate from "../ObjectFieldTemplate";
-import Widgets from "../Widgets";
+//import Widgets from "../Widgets";
 import { ThemeProps } from "@rjsf/core";
-import { utils } from "@rjsf/core";
-import Button from 'react-bulma-components/lib/components/button';
+//import { utils } from "@rjsf/core";
+import Button from 'react-bulma-components/src/components/button';
 
-const { getDefaultRegistry } = utils;
-const { fields, widgets } = getDefaultRegistry();
+//const { getDefaultRegistry } = utils;
+//const { fields, widgets } = getDefaultRegistry();
 
 const DefaultChildren = () => (
   <Button className="submit-button" type="submit">Submit</Button>
@@ -19,10 +19,10 @@ const DefaultChildren = () => (
 const Theme: ThemeProps = {
   children: <DefaultChildren />,
   ArrayFieldTemplate,
-  fields: { ...fields, ...Fields },
+  //fields: { ...fields, ...Fields },
   FieldTemplate,
   ObjectFieldTemplate,
-  widgets: { ...widgets, ...Widgets },
+  //widgets: { ...widgets, ...Widgets },
   ErrorList,
 };
 

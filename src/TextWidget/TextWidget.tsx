@@ -1,13 +1,12 @@
 import React from "react";
 import { WidgetProps } from "@rjsf/core";
-import Form from 'react-bulma-components/lib/components/form';
+import Form from 'react-bulma-components/src/components/form';
 
 const TextWidget = ({
   id,
   required,
   readonly,
   disabled,
-  type,
   value,
   onChange,
   onBlur,
@@ -17,7 +16,7 @@ const TextWidget = ({
   schema,
 }: WidgetProps) => {
   
-  let input_type = type || (schema.type as string);
+  let input_type = schema.type as string;
   let _value = Array.isArray(value) ? value.toString() : value;
 
   if (!['text',

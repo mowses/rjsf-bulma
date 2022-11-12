@@ -1,8 +1,8 @@
 import React from "react";
 import { utils } from "@rjsf/core";
 import PropTypes from "prop-types";
-import Element from 'react-bulma-components/lib/components/element';
-import Form from 'react-bulma-components/lib/components/form';
+import Element from 'react-bulma-components/src/components/element';
+import Form from 'react-bulma-components/src/components/form';
 
 const { asNumber, guessType } = utils;
 

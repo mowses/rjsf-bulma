@@ -1,6 +1,6 @@
 import React from 'react';
 import { WidgetProps } from '@rjsf/core';
-import Form from 'react-bulma-components/lib/components/form';
+import Form from 'react-bulma-components/src/components/form';
 
 const UpDownWidget = ({
   id,

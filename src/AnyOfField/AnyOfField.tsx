@@ -1,6 +1,6 @@
 import React from 'react';
 import MultiSchemaField from '@rjsf/core/lib/components/fields/MultiSchemaField';
-import Form from 'react-bulma-components/lib/components/form';
+import Form from 'react-bulma-components/src/components/form';
 
 class AnyOfField extends MultiSchemaField {
 

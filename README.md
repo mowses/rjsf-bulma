@@ -51,7 +51,7 @@ yarn add bulma @rjsf/core
 ### Installation
 
 ```bash
-yarn add @rjsf/bulma
+npm install git+https://github.com/mowses/rjsf-bulma.git
 ```
 
 ## Usage
