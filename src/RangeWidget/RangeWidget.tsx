@@ -1,5 +1,6 @@
 import React from "react";
-import { WidgetProps, utils } from "@rjsf/core";
+import { WidgetProps } from "@rjsf/utils";
+import utils from "@rjsf/utils";
 import Form from 'react-bulma-components/src/components/form';
 
 const { rangeSpec } = utils;

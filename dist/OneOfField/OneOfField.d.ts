@@ -1,6 +1,6 @@
-/// <reference types="react" />
-import MultiSchemaField from '@rjsf/core/lib/components/fields/MultiSchemaField';
-declare class OneOfField extends MultiSchemaField {
+import React from 'react';
+import { FieldProps } from "@rjsf/utils";
+declare class OneOfField extends React.Component<FieldProps> {
     render(): JSX.Element;
 }
 export default OneOfField;

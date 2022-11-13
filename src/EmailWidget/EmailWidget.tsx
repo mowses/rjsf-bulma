@@ -1,5 +1,5 @@
 import React from "react";
-import { WidgetProps } from "@rjsf/core";
+import { WidgetProps } from "@rjsf/utils";
 import Form from 'react-bulma-components/src/components/form';
 
 const EmailWidget = ({

@@ -6,17 +6,30 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var core = require('@rjsf/core');
 var React = _interopDefault(require('react'));
-var Box = _interopDefault(require('react-bulma-components/src/components/box'));
-var Button = _interopDefault(require('react-bulma-components/src/components/button'));
-var Columns = _interopDefault(require('react-bulma-components/src/components/columns'));
+var Form$1 = _interopDefault(require('react-bulma-components/src/components/form'));
 var Element = _interopDefault(require('react-bulma-components/src/components/element'));
+var Heading = _interopDefault(require('react-bulma-components/src/components/heading'));
 var Content = _interopDefault(require('react-bulma-components/src/components/content'));
 var Notification = _interopDefault(require('react-bulma-components/src/components/notification'));
-var Form$1 = _interopDefault(require('react-bulma-components/src/components/form'));
 var Card = _interopDefault(require('react-bulma-components/src/components/card'));
-var MultiSchemaField = _interopDefault(require('@rjsf/core/lib/components/fields/MultiSchemaField'));
-var Heading = _interopDefault(require('react-bulma-components/src/components/heading'));
 var PropTypes = _interopDefault(require('prop-types'));
+var utils = _interopDefault(require('@rjsf/utils'));
+
+//import Button from 'react-bulma-components/src/components/button';
+//const { getDefaultRegistry } = utils;
+//const { fields, widgets } = getDefaultRegistry();
+var widgets = {};
+var fields = {};
+/*const DefaultChildren = () => (
+  <Button className="submit-button" type="submit">Submit</Button>
+);*/
+var Theme = {
+  //children: <DefaultChildren />,
+  fields: fields,
+  widgets: widgets
+};
+
+var Form = /*#__PURE__*/core.withTheme(Theme);
 
 function _extends() {
   _extends = Object.assign ? Object.assign.bind() : function (target) {
@@ -44,181 +57,61 @@ function _setPrototypeOf(o, p) {
   };
   return _setPrototypeOf(o, p);
 }
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-  return target;
-}
 
-var _excluded = ["className"];
-var AddButton = function AddButton(props) {
-  var className = props.className,
-    other = _objectWithoutPropertiesLoose(props, _excluded);
-  return React.createElement(Button, Object.assign({}, other, {
-    className: className
-  }), React.createElement("span", {
-    className: "icon"
-  }, React.createElement("i", {
-    className: "fas fa-plus"
-  })), " Add Item");
-};
-
-var _excluded$1 = ["icon"];
-var IconButton = function IconButton(props) {
-  var icon = props.icon,
-    otherProps = _objectWithoutPropertiesLoose(props, _excluded$1);
-  return React.createElement(Button, Object.assign({}, otherProps), React.createElement("span", {
-    className: "icon"
-  }, React.createElement("i", {
-    className: "fas fa-" + icon
-  })));
-};
-
-var isMultiSelect = core.utils.isMultiSelect,
-  getDefaultRegistry = core.utils.getDefaultRegistry;
-var ArrayFieldTemplate = function ArrayFieldTemplate(props) {
-  var schema = props.schema,
-    _props$registry = props.registry,
-    registry = _props$registry === void 0 ? getDefaultRegistry() : _props$registry;
-  // TODO: update types so we don't have to cast registry as any
-  if (isMultiSelect(schema, registry.rootSchema)) {
-    return React.createElement(DefaultFixedArrayFieldTemplate, Object.assign({}, props));
-  } else {
-    return React.createElement(DefaultNormalArrayFieldTemplate, Object.assign({}, props));
+var AnyOfField = /*#__PURE__*/function (_React$Component) {
+  _inheritsLoose(AnyOfField, _React$Component);
+  function AnyOfField() {
+    return _React$Component.apply(this, arguments) || this;
   }
-};
-var ArrayFieldTitle = function ArrayFieldTitle(_ref) {
-  var TitleField = _ref.TitleField,
-    idSchema = _ref.idSchema,
-    title = _ref.title,
-    required = _ref.required;
-  if (!title) {
-    return null;
-  }
-  var id = idSchema.$id + "__title";
-  return React.createElement(TitleField, {
-    id: id,
-    title: title,
-    required: required
-  });
-};
-var ArrayFieldDescription = function ArrayFieldDescription(_ref2) {
-  var DescriptionField = _ref2.DescriptionField,
-    idSchema = _ref2.idSchema,
-    description = _ref2.description;
-  if (!description) {
-    return null;
-  }
-  var id = idSchema.$id + "__description";
-  return React.createElement(DescriptionField, {
-    id: id,
-    description: description
-  });
-};
-// Used in the two templates
-var DefaultArrayItem = function DefaultArrayItem(props) {
-  var btnStyle = {
-    flex: 1,
-    paddingLeft: 6,
-    paddingRight: 6,
-    fontWeight: 'bold'
+  var _proto = AnyOfField.prototype;
+  _proto.render = function render() {
+    return React.createElement(Form$1.Field, {
+      kind: "group"
+    }, React.createElement(Form$1.Control, null), React.createElement(Form$1.Control, {
+      fullwidth: true
+    }));
   };
-  return React.createElement(Columns, {
-    key: props.key
-  }, React.createElement(Columns.Column, null, props.children), props.hasToolbar && React.createElement(Columns.Column, {
-    className: "array-item-toolbox"
-  }, React.createElement(Button.Group, {
-    hasAddons: true,
-    align: "right"
-  }, (props.hasMoveUp || props.hasMoveDown) && React.createElement(IconButton, {
-    icon: "arrow-up",
-    className: "array-item-move-up",
-    tabIndex: -1,
-    style: btnStyle,
-    disabled: props.disabled || props.readonly || !props.hasMoveUp,
-    onClick: props.onReorderClick(props.index, props.index - 1)
-  }), (props.hasMoveUp || props.hasMoveDown) && React.createElement(IconButton, {
-    icon: "arrow-down",
-    className: "array-item-move-down",
-    tabIndex: -1,
-    style: btnStyle,
-    disabled: props.disabled || props.readonly || !props.hasMoveDown,
-    onClick: props.onReorderClick(props.index, props.index + 1)
-  }), props.hasRemove && React.createElement(IconButton, {
-    icon: "times",
-    className: "array-item-remove",
-    tabIndex: -1,
-    style: btnStyle,
-    disabled: props.disabled || props.readonly,
-    onClick: props.onDropIndexClick(props.index)
-  }))));
-};
-var DefaultFixedArrayFieldTemplate = function DefaultFixedArrayFieldTemplate(props) {
-  return React.createElement(Box, {
-    className: props.className
-  }, React.createElement(ArrayFieldTitle, {
-    key: "array-field-title-" + props.idSchema.$id,
-    TitleField: props.TitleField,
-    idSchema: props.idSchema,
-    title: props.uiSchema['ui:title'] || props.title,
-    required: props.required
-  }), (props.uiSchema['ui:description'] || props.schema.description) && React.createElement(Element, {
-    renderAs: "p",
-    key: "field-description-" + props.idSchema.$id,
-    className: "description"
-  }, props.uiSchema['ui:description'] || props.schema.description), React.createElement(Element, {
-    key: "array-item-list-" + props.idSchema.$id,
-    className: "row array-item-list"
-  }, props.items && props.items.map(function (p) {
-    return DefaultArrayItem(p);
-  })), props.canAdd && React.createElement(AddButton, {
-    className: "array-item-add",
-    onClick: props.onAddClick,
-    disabled: props.disabled || props.readonly
-  }));
-};
-var DefaultNormalArrayFieldTemplate = function DefaultNormalArrayFieldTemplate(props) {
-  return React.createElement(React.Fragment, null, React.createElement(ArrayFieldTitle, {
-    key: "array-field-title-" + props.idSchema.$id,
-    TitleField: props.TitleField,
-    idSchema: props.idSchema,
-    title: props.uiSchema['ui:title'] || props.title,
-    required: props.required
-  }), (props.uiSchema['ui:description'] || props.schema.description) && React.createElement(ArrayFieldDescription, {
-    key: "array-field-description-" + props.idSchema.$id,
-    DescriptionField: props.DescriptionField,
-    idSchema: props.idSchema,
-    description: props.uiSchema['ui:description'] || props.schema.description
-  }), React.createElement(Element, {
-    key: "array-item-list-" + props.idSchema.$id,
-    className: "row array-item-list"
-  }, props.items && props.items.map(function (p) {
-    return DefaultArrayItem(p);
-  })), props.canAdd && React.createElement(AddButton, {
-    className: "array-item-add",
-    onClick: props.onAddClick,
-    disabled: props.disabled || props.readonly
-  }));
+  return AnyOfField;
+}(React.Component);
+
+var DescriptionField = function DescriptionField(_ref) {
+  var description = _ref.description;
+  if (!description) return null;
+  return React.createElement(Element, {
+    renderAs: "div",
+    className: "subtitle description"
+  }, description);
 };
 
-var ErrorList = function ErrorList(_ref) {
-  var errors = _ref.errors;
-  return React.createElement(Content, {
-    renderAs: "ul",
-    className: "error-list-items"
-  }, errors.map(function (error, i) {
-    return React.createElement(Notification, {
-      renderAs: "li",
-      key: i
-    }, error.stack);
-  }));
+var OneOfField = /*#__PURE__*/function (_React$Component) {
+  _inheritsLoose(OneOfField, _React$Component);
+  function OneOfField() {
+    return _React$Component.apply(this, arguments) || this;
+  }
+  var _proto = OneOfField.prototype;
+  _proto.render = function render() {
+    return React.createElement(Form$1.Field, {
+      kind: "group"
+    }, React.createElement(Form$1.Control, null), React.createElement(Form$1.Control, {
+      fullwidth: true
+    }));
+  };
+  return OneOfField;
+}(React.Component);
+
+var TitleField = function TitleField(_ref) {
+  var title = _ref.title;
+  if (!title) return null;
+  return React.createElement(Heading, {
+    renderAs: "h5"
+  }, title);
+};
+
+var Fields = {
+  AnyOfField: AnyOfField,
+  DescriptionField: DescriptionField,
+  OneOfField: OneOfField,
+  TitleField: TitleField
 };
 
 var FieldErrorListTemplate = function FieldErrorListTemplate(errors) {
@@ -272,7 +165,7 @@ var ObjectFieldTemplate = function ObjectFieldTemplate(_ref) {
     title = _ref.title,
     properties = _ref.properties,
     uiSchema = _ref.uiSchema;
-  return React.createElement(Card, null, (uiSchema['ui:title'] || title) && React.createElement(Card.Header, null, React.createElement(Card.Header.Title, null, title), React.createElement(Card.Header.Icon, null)), React.createElement(Card.Content, null, description && React.createElement(Element, {
+  return React.createElement(Card, null, (uiSchema && uiSchema['ui:title'] || title) && React.createElement(Card.Header, null, React.createElement(Card.Header.Title, null, title), React.createElement(Card.Header.Icon, null)), React.createElement(Card.Content, null, description && React.createElement(Element, {
     renderAs: "div",
     className: "subtitle description"
   }, description), properties.map(function (element, index) {
@@ -281,84 +174,6 @@ var ObjectFieldTemplate = function ObjectFieldTemplate(_ref) {
       className: "field-row"
     }, element.content);
   })));
-};
-
-//const { getDefaultRegistry } = utils;
-//const { fields, widgets } = getDefaultRegistry();
-var DefaultChildren = function DefaultChildren() {
-  return React.createElement(Button, {
-    className: "submit-button",
-    type: "submit"
-  }, "Submit");
-};
-var Theme = {
-  children: /*#__PURE__*/React.createElement(DefaultChildren, null),
-  ArrayFieldTemplate: ArrayFieldTemplate,
-  //fields: { ...fields, ...Fields },
-  FieldTemplate: FieldTemplate,
-  ObjectFieldTemplate: ObjectFieldTemplate,
-  //widgets: { ...widgets, ...Widgets },
-  ErrorList: ErrorList
-};
-
-var Form = /*#__PURE__*/core.withTheme(Theme);
-
-var AnyOfField = /*#__PURE__*/function (_MultiSchemaField) {
-  _inheritsLoose(AnyOfField, _MultiSchemaField);
-  function AnyOfField() {
-    return _MultiSchemaField.apply(this, arguments) || this;
-  }
-  var _proto = AnyOfField.prototype;
-  _proto.render = function render() {
-    var field = _MultiSchemaField.prototype.render.apply(this, arguments);
-    return React.createElement(Form$1.Field, {
-      kind: "group"
-    }, React.createElement(Form$1.Control, null, field.props.children[0].props.children), React.createElement(Form$1.Control, {
-      fullwidth: true
-    }, field.props.children[1]));
-  };
-  return AnyOfField;
-}(MultiSchemaField);
-
-var DescriptionField = function DescriptionField(_ref) {
-  var description = _ref.description;
-  if (!description) return null;
-  return React.createElement(Element, {
-    renderAs: "div",
-    className: "subtitle description"
-  }, description);
-};
-
-var OneOfField = /*#__PURE__*/function (_MultiSchemaField) {
-  _inheritsLoose(OneOfField, _MultiSchemaField);
-  function OneOfField() {
-    return _MultiSchemaField.apply(this, arguments) || this;
-  }
-  var _proto = OneOfField.prototype;
-  _proto.render = function render() {
-    var field = _MultiSchemaField.prototype.render.apply(this, arguments);
-    return React.createElement(Form$1.Field, {
-      kind: "group"
-    }, React.createElement(Form$1.Control, null, field.props.children[0].props.children), React.createElement(Form$1.Control, {
-      fullwidth: true
-    }, field.props.children[1]));
-  };
-  return OneOfField;
-}(MultiSchemaField);
-
-var TitleField = function TitleField(_ref) {
-  var title = _ref.title;
-  if (!title) return null;
-  return React.createElement(Heading, {
-    renderAs: "h5"
-  }, title);
-};
-
-var Fields = {
-  AnyOfField: AnyOfField,
-  DescriptionField: DescriptionField,
-  OneOfField: OneOfField,
-  TitleField: TitleField
 };
 
 // Check to see if a schema specifies that a value must be true
@@ -595,8 +410,8 @@ var DateWidget = function DateWidget(_ref) {
   }));
 };
 
-var localToUTC = core.utils.localToUTC,
-  utcToLocal = core.utils.utcToLocal;
+var localToUTC = utils.localToUTC,
+  utcToLocal = utils.utcToLocal;
 var DateTimeWidget = function DateTimeWidget(_ref) {
   var id = _ref.id,
     required = _ref.required,
@@ -763,7 +578,7 @@ var RadioWidget = function RadioWidget(_ref) {
   })));
 };
 
-var rangeSpec = core.utils.rangeSpec;
+var rangeSpec = utils.rangeSpec;
 var RangeWidget = function RangeWidget(_ref) {
   var value = _ref.value,
     readonly = _ref.readonly,
@@ -806,8 +621,8 @@ var RangeWidget = function RangeWidget(_ref) {
   }, sliderProps)));
 };
 
-var asNumber = core.utils.asNumber,
-  guessType = core.utils.guessType;
+var asNumber = utils.asNumber,
+  guessType = utils.guessType;
 var nums = /*#__PURE__*/new Set(["number", "integer"]);
 /**
  * This is a silly limitation in the DOM where option change event values are

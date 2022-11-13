@@ -1,6 +1,5 @@
 import React from 'react';
-import { utils } from '@rjsf/core';
-import { ArrayFieldTemplateProps, IdSchema } from '@rjsf/core';
+import { ArrayFieldTemplateProps, IdSchema } from '@rjsf/utils';
 import Box from 'react-bulma-components/src/components/box';
 import Button from 'react-bulma-components/src/components/button';
 import Columns from 'react-bulma-components/src/components/columns';
@@ -8,16 +7,12 @@ import Element from 'react-bulma-components/src/components/element';
 import AddButton from '../AddButton/AddButton';
 import IconButton from '../IconButton/IconButton';
 
-const {
-  isMultiSelect,
-  getDefaultRegistry,
-} = utils;
-
 const ArrayFieldTemplate = (props: ArrayFieldTemplateProps) => {
-  const { schema, registry = getDefaultRegistry() } = props;
+  const { registry } = props;
+  const { schemaUtils } = registry;
 
   // TODO: update types so we don't have to cast registry as any
-  if (isMultiSelect(schema, (registry as any).rootSchema)) {
+  if (schemaUtils.isMultiSelect(schemaUtils)) {
     return <DefaultFixedArrayFieldTemplate {...props} />;
   } else {
     return <DefaultNormalArrayFieldTemplate {...props} />;
@@ -125,15 +120,15 @@ const DefaultFixedArrayFieldTemplate = (props: ArrayFieldTemplateProps) => {
     <Box className={props.className}>
       <ArrayFieldTitle
         key={`array-field-title-${props.idSchema.$id}`}
-        TitleField={props.TitleField}
+        TitleField={props.uiSchema?.TitleFieldTemplate}
         idSchema={props.idSchema}
-        title={props.uiSchema['ui:title'] || props.title}
-        required={props.required}
+        title={props.uiSchema && props.uiSchema['ui:title'] || props.title}
+        required={!!props.required}
       />
 
-      {(props.uiSchema['ui:description'] || props.schema.description) && (
+      {(props.uiSchema && props.uiSchema['ui:description'] || props.schema.description) && (
         <Element renderAs="p" key={`field-description-${props.idSchema.$id}`} className="description">
-          {props.uiSchema['ui:description'] || props.schema.description}
+          {props.uiSchema && props.uiSchema['ui:description'] || props.schema.description}
         </Element>
       )}
 
@@ -157,19 +152,19 @@ const DefaultNormalArrayFieldTemplate = (props: ArrayFieldTemplateProps) => {
     <>
       <ArrayFieldTitle
         key={`array-field-title-${props.idSchema.$id}`}
-        TitleField={props.TitleField}
+        TitleField={props.title}
         idSchema={props.idSchema}
-        title={props.uiSchema['ui:title'] || props.title}
-        required={props.required}
+        title={props.uiSchema && props.uiSchema['ui:title'] || props.title}
+        required={!!props.required}
       />
 
-      {(props.uiSchema['ui:description'] || props.schema.description) && (
+      {(props.uiSchema && props.uiSchema['ui:description'] || props.schema.description) && (
         <ArrayFieldDescription
           key={`array-field-description-${props.idSchema.$id}`}
-          DescriptionField={props.DescriptionField}
+          DescriptionField={props.uiSchema?.DescriptionFieldTemplate}
           idSchema={props.idSchema}
           description={
-            props.uiSchema['ui:description'] || props.schema.description
+            props.uiSchema && props.uiSchema['ui:description'] || props.schema.description
           }
         />
       )}

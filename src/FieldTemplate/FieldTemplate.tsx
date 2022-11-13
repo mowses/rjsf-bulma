@@ -1,5 +1,5 @@
 import React from "react";
-import { FieldTemplateProps } from "@rjsf/core";
+import { FieldTemplateProps } from "@rjsf/utils";
 import Form from 'react-bulma-components/src/components/form';
 import Content from 'react-bulma-components/src/components/content';
 import Notification from 'react-bulma-components/src/components/notification';

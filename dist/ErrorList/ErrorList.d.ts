@@ -1,4 +1,3 @@
 /// <reference types="react" />
-import { ErrorListProps } from '@rjsf/core';
-declare const ErrorList: ({ errors }: ErrorListProps) => JSX.Element;
+declare const ErrorList: ({ errors }: any) => JSX.Element;
 export default ErrorList;
