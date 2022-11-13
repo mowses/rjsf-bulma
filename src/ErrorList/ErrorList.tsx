@@ -1,7 +1,6 @@
 import React from 'react';
-import { ErrorListProps } from '@rjsf/core';
-import Content from 'react-bulma-components/src/components/content';
-import Notification from 'react-bulma-components/src/components/notification';
+import { ErrorListProps } from '@rjsf/utils';
+import { Content, Notification } from 'react-bulma-components';
 
 const ErrorList = ({ errors }: ErrorListProps) => (
   <Content renderAs="ul" className="error-list-items">

@@ -1,5 +1,5 @@
 import React from 'react';
-import Form from 'react-bulma-components/src/components/form';
+import { Form } from 'react-bulma-components';
 import {FieldProps} from "@rjsf/utils";
 
 class OneOfField extends React.Component<FieldProps> {

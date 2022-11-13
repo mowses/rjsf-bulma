@@ -39,15 +39,6 @@ Exports `bulma` theme, fields and widgets for `react-jsonschema-form`.
 
 ## Getting Started
 
-### Prerequisites
-
-- `bulma >= 0.9.0`
-- `@rjsf/core >= 2.1.0`
-
-```bash
-yarn add bulma @rjsf/core
-```
-
 ### Installation
 
 ```bash

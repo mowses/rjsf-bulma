@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from 'react-bulma-components/src/components/button';
+import { Button } from 'react-bulma-components';
 
 const IconButton = (props: any) => {
   const { icon, ...otherProps } = props;

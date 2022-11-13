@@ -1,6 +1,6 @@
 import React from 'react';
 import { AddButtonProps } from '@rjsf/core';
-import Button from 'react-bulma-components/src/components/button';
+import { Button } from 'react-bulma-components';
 
 const AddButton: React.FC<AddButtonProps> = props => {
     const { className, ...other } = props;

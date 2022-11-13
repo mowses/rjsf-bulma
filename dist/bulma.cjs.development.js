@@ -6,16 +6,11 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var core = require('@rjsf/core');
 var React = _interopDefault(require('react'));
-var Form$1 = _interopDefault(require('react-bulma-components/src/components/form'));
-var Element = _interopDefault(require('react-bulma-components/src/components/element'));
-var Heading = _interopDefault(require('react-bulma-components/src/components/heading'));
-var Content = _interopDefault(require('react-bulma-components/src/components/content'));
-var Notification = _interopDefault(require('react-bulma-components/src/components/notification'));
-var Card = _interopDefault(require('react-bulma-components/src/components/card'));
+var reactBulmaComponents = require('react-bulma-components');
 var PropTypes = _interopDefault(require('prop-types'));
 var utils = _interopDefault(require('@rjsf/utils'));
 
-//import Button from 'react-bulma-components/src/components/button';
+//import { Button } from 'react-bulma-components';
 //const { getDefaultRegistry } = utils;
 //const { fields, widgets } = getDefaultRegistry();
 var widgets = {};
@@ -65,9 +60,9 @@ var AnyOfField = /*#__PURE__*/function (_React$Component) {
   }
   var _proto = AnyOfField.prototype;
   _proto.render = function render() {
-    return React.createElement(Form$1.Field, {
+    return React.createElement(reactBulmaComponents.Form.Field, {
       kind: "group"
-    }, React.createElement(Form$1.Control, null), React.createElement(Form$1.Control, {
+    }, React.createElement(reactBulmaComponents.Form.Control, null), React.createElement(reactBulmaComponents.Form.Control, {
       fullwidth: true
     }));
   };
@@ -77,7 +72,7 @@ var AnyOfField = /*#__PURE__*/function (_React$Component) {
 var DescriptionField = function DescriptionField(_ref) {
   var description = _ref.description;
   if (!description) return null;
-  return React.createElement(Element, {
+  return React.createElement(reactBulmaComponents.Element, {
     renderAs: "div",
     className: "subtitle description"
   }, description);
@@ -90,9 +85,9 @@ var OneOfField = /*#__PURE__*/function (_React$Component) {
   }
   var _proto = OneOfField.prototype;
   _proto.render = function render() {
-    return React.createElement(Form$1.Field, {
+    return React.createElement(reactBulmaComponents.Form.Field, {
       kind: "group"
-    }, React.createElement(Form$1.Control, null), React.createElement(Form$1.Control, {
+    }, React.createElement(reactBulmaComponents.Form.Control, null), React.createElement(reactBulmaComponents.Form.Control, {
       fullwidth: true
     }));
   };
@@ -102,7 +97,7 @@ var OneOfField = /*#__PURE__*/function (_React$Component) {
 var TitleField = function TitleField(_ref) {
   var title = _ref.title;
   if (!title) return null;
-  return React.createElement(Heading, {
+  return React.createElement(reactBulmaComponents.Heading, {
     renderAs: "h5"
   }, title);
 };
@@ -116,11 +111,11 @@ var Fields = {
 
 var FieldErrorListTemplate = function FieldErrorListTemplate(errors) {
   if (!errors || !errors.length) return null;
-  return React.createElement(Content, {
+  return React.createElement(reactBulmaComponents.Content, {
     renderAs: "ul",
     className: "error-list-field"
   }, errors.map(function (error, index) {
-    return React.createElement(Notification, {
+    return React.createElement(reactBulmaComponents.Notification, {
       renderAs: "li",
       key: index
     }, error);
@@ -151,11 +146,11 @@ var FieldTemplate = function FieldTemplate(_ref) {
   if (disabled) {
     classnames += ' disabled';
   }
-  return React.createElement(Form$1.Field, {
+  return React.createElement(reactBulmaComponents.Form.Field, {
     className: classnames
-  }, displayLabel && label ? React.createElement(Form$1.Label, {
+  }, displayLabel && label ? React.createElement(reactBulmaComponents.Form.Label, {
     htmlFor: FieldIsBool(schema, uiSchema) ? undefined : id
-  }, label) : null, description, React.createElement(Form$1.Control, null, children), FieldErrorListTemplate(rawErrors), (rawHelp || help && help.props.help) && React.createElement(Form$1.Help, {
+  }, label) : null, description, React.createElement(reactBulmaComponents.Form.Control, null, children), FieldErrorListTemplate(rawErrors), (rawHelp || help && help.props.help) && React.createElement(reactBulmaComponents.Form.Help, {
     renderAs: "div"
   }, rawHelp ? rawHelp : help));
 };
@@ -165,11 +160,11 @@ var ObjectFieldTemplate = function ObjectFieldTemplate(_ref) {
     title = _ref.title,
     properties = _ref.properties,
     uiSchema = _ref.uiSchema;
-  return React.createElement(Card, null, (uiSchema && uiSchema['ui:title'] || title) && React.createElement(Card.Header, null, React.createElement(Card.Header.Title, null, title), React.createElement(Card.Header.Icon, null)), React.createElement(Card.Content, null, description && React.createElement(Element, {
+  return React.createElement(reactBulmaComponents.Card, null, (uiSchema && uiSchema['ui:title'] || title) && React.createElement(reactBulmaComponents.Card.Header, null, React.createElement(reactBulmaComponents.Card.Header.Title, null, title), React.createElement(reactBulmaComponents.Card.Header.Icon, null)), React.createElement(reactBulmaComponents.Card.Content, null, description && React.createElement(reactBulmaComponents.Element, {
     renderAs: "div",
     className: "subtitle description"
   }, description), properties.map(function (element, index) {
-    return React.createElement(Form$1.Field, {
+    return React.createElement(reactBulmaComponents.Form.Field, {
       key: index,
       className: "field-row"
     }, element.content);
@@ -215,7 +210,7 @@ function CheckboxWidget(props) {
   // the "required" attribute if the field value must be "true", due to the
   // "const" or "enum" keywords
   var required = schemaRequiresTrueValue(schema);
-  return React.createElement(Form$1.Checkbox, {
+  return React.createElement(reactBulmaComponents.Form.Checkbox, {
     id: id,
     className: "" + (disabled || readonly ? "disabled" : ""),
     checked: typeof value === "undefined" ? false : value,
@@ -274,14 +269,14 @@ function CheckboxesWidget(props) {
   var enumOptions = options.enumOptions,
     enumDisabled = options.enumDisabled,
     inline = options.inline;
-  return React.createElement(Element, {
+  return React.createElement(reactBulmaComponents.Element, {
     className: "checkboxes",
     id: id
   }, enumOptions.map(function (option, index) {
     var checked = value.indexOf(option.value) !== -1;
     var itemDisabled = enumDisabled && enumDisabled.indexOf(option.value) != -1;
     var disabledCls = disabled || itemDisabled || readonly ? "disabled" : "";
-    return React.createElement(Form$1.Checkbox, {
+    return React.createElement(reactBulmaComponents.Form.Checkbox, {
       key: index,
       className: (inline ? 'checkbox-inline' : 'checkbox-block') + (" " + disabledCls),
       id: id + "_" + index,
@@ -351,10 +346,10 @@ var ColorWidget = function ColorWidget(_ref) {
     var value = _ref4.target.value;
     return onFocus(id, value);
   };
-  return React.createElement(React.Fragment, null, label || schema.title ? React.createElement(Form$1.Label, {
+  return React.createElement(React.Fragment, null, label || schema.title ? React.createElement(reactBulmaComponents.Form.Label, {
     className: required ? 'required' : '',
     htmlFor: id
-  }, label || schema.title) : null, React.createElement(Form$1.Input, {
+  }, label || schema.title) : null, React.createElement(reactBulmaComponents.Form.Input, {
     type: "color",
     id: id,
     autoFocus: autofocus,
@@ -393,10 +388,10 @@ var DateWidget = function DateWidget(_ref) {
     var value = _ref4.target.value;
     return onFocus(id, value);
   };
-  return React.createElement(React.Fragment, null, label || schema.title ? React.createElement(Form$1.Label, {
+  return React.createElement(React.Fragment, null, label || schema.title ? React.createElement(reactBulmaComponents.Form.Label, {
     className: required ? 'required' : '',
     htmlFor: id
-  }, label || schema.title) : null, React.createElement(Form$1.Input, {
+  }, label || schema.title) : null, React.createElement(reactBulmaComponents.Form.Input, {
     type: "date",
     id: id,
     autoFocus: autofocus,
@@ -434,7 +429,7 @@ var DateTimeWidget = function DateTimeWidget(_ref) {
     var value = _ref4.target.value;
     return onFocus(id, value);
   };
-  return React.createElement(Form$1.Input, {
+  return React.createElement(reactBulmaComponents.Form.Input, {
     type: "datetime-local",
     id: id,
     autoFocus: autofocus,
@@ -473,10 +468,10 @@ var EmailWidget = function EmailWidget(_ref) {
     var value = _ref4.target.value;
     return onFocus(id, value);
   };
-  return React.createElement(React.Fragment, null, label || schema.title ? React.createElement(Form$1.Label, {
+  return React.createElement(React.Fragment, null, label || schema.title ? React.createElement(reactBulmaComponents.Form.Label, {
     className: required ? 'required' : '',
     htmlFor: id
-  }, label || schema.title) : null, React.createElement(Form$1.Input, {
+  }, label || schema.title) : null, React.createElement(reactBulmaComponents.Form.Input, {
     type: "email",
     id: id,
     autoFocus: autofocus,
@@ -490,7 +485,7 @@ var EmailWidget = function EmailWidget(_ref) {
   }));
 };
 
-var Input = Form$1.Input;
+var Input = reactBulmaComponents.Form.Input;
 var PasswordWidget = function PasswordWidget(_ref) {
   var id = _ref.id,
     required = _ref.required,
@@ -557,17 +552,17 @@ var RadioWidget = function RadioWidget(_ref) {
     return onFocus(id, value);
   };
   var row = options ? options.inline : false;
-  return React.createElement(React.Fragment, null, label || schema.title ? React.createElement(Form$1.Label, {
+  return React.createElement(React.Fragment, null, label || schema.title ? React.createElement(reactBulmaComponents.Form.Label, {
     className: required ? 'required' : '',
     htmlFor: id
-  }, label || schema.title) : null, React.createElement(Form$1.Field, {
+  }, label || schema.title) : null, React.createElement(reactBulmaComponents.Form.Field, {
     kind: "group",
     horizontal: !!row
   }, enumOptions.map(function (option, i) {
     var itemDisabled = enumDisabled && enumDisabled.indexOf(option.value) != -1;
-    return React.createElement(Form$1.Label, {
+    return React.createElement(reactBulmaComponents.Form.Label, {
       htmlFor: id + "_" + i
-    }, React.createElement(Form$1.Radio, {
+    }, React.createElement(reactBulmaComponents.Form.Radio, {
       key: i,
       value: "" + option.value,
       disabled: disabled || itemDisabled || readonly,
@@ -608,10 +603,10 @@ var RangeWidget = function RangeWidget(_ref) {
     var value = _ref4.target.value;
     return onFocus(id, value);
   };
-  return React.createElement(React.Fragment, null, label || schema.title ? React.createElement(Form$1.Label, {
+  return React.createElement(React.Fragment, null, label || schema.title ? React.createElement(reactBulmaComponents.Form.Label, {
     className: required ? 'required' : '',
     htmlFor: id
-  }, label || schema.title) : null, React.createElement(Form$1.Input, Object.assign({
+  }, label || schema.title) : null, React.createElement(reactBulmaComponents.Form.Input, Object.assign({
     type: "range",
     className: "slider is-fullwidth",
     disabled: disabled || readonly,
@@ -684,7 +679,7 @@ function SelectWidget(props) {
   var enumOptions = options.enumOptions,
     enumDisabled = options.enumDisabled;
   var emptyValue = multiple ? [] : "";
-  return React.createElement(Form$1.Select, {
+  return React.createElement(reactBulmaComponents.Form.Select, {
     id: id,
     multiple: multiple,
     value: typeof value === "undefined" ? emptyValue : value,
@@ -709,7 +704,7 @@ function SelectWidget(props) {
     var value = _ref.value,
       label = _ref.label;
     var disabled = enumDisabled && enumDisabled.indexOf(value) != -1;
-    return React.createElement(Element, {
+    return React.createElement(reactBulmaComponents.Element, {
       renderAs: "option",
       key: i,
       value: value,
@@ -763,7 +758,7 @@ var TextareaWidget = function TextareaWidget(_ref) {
     var value = _ref4.target.value;
     return onFocus(id, value);
   };
-  return React.createElement(Form$1.Textarea, {
+  return React.createElement(reactBulmaComponents.Form.Textarea, {
     id: id,
     required: required,
     placeholder: placeholder,
@@ -806,7 +801,7 @@ var TextWidget = function TextWidget(_ref) {
     var value = _ref4.target.value;
     return onFocus(id, value);
   };
-  return React.createElement(Form$1.Input, {
+  return React.createElement(reactBulmaComponents.Form.Input, {
     type: input_type,
     id: id,
     autoFocus: autofocus,
@@ -844,10 +839,10 @@ var UpDownWidget = function UpDownWidget(_ref) {
     var value = _ref4.target.value;
     return onFocus(id, value);
   };
-  return React.createElement(Form$1.Field, null, label || schema.title ? React.createElement(Form$1.Label, {
+  return React.createElement(reactBulmaComponents.Form.Field, null, label || schema.title ? React.createElement(reactBulmaComponents.Form.Label, {
     className: required ? 'required' : '',
     htmlFor: id
-  }, label || schema.title) : null, React.createElement(Form$1.Input, {
+  }, label || schema.title) : null, React.createElement(reactBulmaComponents.Form.Input, {
     type: "number",
     id: id,
     autoFocus: autofocus,
@@ -886,10 +881,10 @@ var URLWidget = function URLWidget(_ref) {
     var value = _ref4.target.value;
     return onFocus(id, value);
   };
-  return React.createElement(React.Fragment, null, label || schema.title ? React.createElement(Form$1.Label, {
+  return React.createElement(React.Fragment, null, label || schema.title ? React.createElement(reactBulmaComponents.Form.Label, {
     className: required ? 'required' : '',
     htmlFor: id
-  }, label || schema.title) : null, React.createElement(Form$1.Input, {
+  }, label || schema.title) : null, React.createElement(reactBulmaComponents.Form.Input, {
     type: "url",
     id: id,
     autoFocus: autofocus,

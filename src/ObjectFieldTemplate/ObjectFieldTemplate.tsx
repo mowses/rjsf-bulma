@@ -1,8 +1,6 @@
 import React from 'react';
 import { ObjectFieldTemplateProps } from '@rjsf/utils';
-import Card from 'react-bulma-components/src/components/card';
-import Element from 'react-bulma-components/src/components/element';
-import Form from 'react-bulma-components/src/components/form';
+import { Card, Element, Form } from 'react-bulma-components';
 
 const ObjectFieldTemplate = ({
   description,

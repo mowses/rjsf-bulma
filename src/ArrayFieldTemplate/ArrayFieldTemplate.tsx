@@ -1,9 +1,6 @@
 import React from 'react';
 import { ArrayFieldTemplateProps, IdSchema } from '@rjsf/utils';
-import Box from 'react-bulma-components/src/components/box';
-import Button from 'react-bulma-components/src/components/button';
-import Columns from 'react-bulma-components/src/components/columns';
-import Element from 'react-bulma-components/src/components/element';
+import { Button, Box, Columns, Element } from 'react-bulma-components';
 import AddButton from '../AddButton/AddButton';
 import IconButton from '../IconButton/IconButton';
 

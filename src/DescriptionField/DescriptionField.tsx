@@ -1,6 +1,6 @@
 import React from 'react';
 import { FieldProps } from '@rjsf/utils';
-import Element from 'react-bulma-components/src/components/element';
+import { Element } from 'react-bulma-components';
 
 const DescriptionField = ({ description }: FieldProps) => {
   if (!description) return null;

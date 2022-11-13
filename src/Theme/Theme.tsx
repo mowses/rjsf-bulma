@@ -8,7 +8,7 @@
 import { ThemeProps } from "@rjsf/core";
 //import { utils } from "@rjsf/core";
 import { RegistryWidgetsType, RegistryFieldsType } from "@rjsf/utils";
-//import Button from 'react-bulma-components/src/components/button';
+//import { Button } from 'react-bulma-components';
 
 //const { getDefaultRegistry } = utils;
 //const { fields, widgets } = getDefaultRegistry();

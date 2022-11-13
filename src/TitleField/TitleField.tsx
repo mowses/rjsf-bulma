@@ -1,6 +1,6 @@
 import React from 'react';
 import { FieldProps } from '@rjsf/utils';
-import Heading from 'react-bulma-components/src/components/heading';
+import { Heading } from 'react-bulma-components';
 
 const TitleField = ({ title }: FieldProps) => {
     if (!title) return null;

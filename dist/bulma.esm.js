@@ -1,15 +1,10 @@
 import { withTheme } from '@rjsf/core';
 import React from 'react';
-import Form$1 from 'react-bulma-components/src/components/form';
-import Element from 'react-bulma-components/src/components/element';
-import Heading from 'react-bulma-components/src/components/heading';
-import Content from 'react-bulma-components/src/components/content';
-import Notification from 'react-bulma-components/src/components/notification';
-import Card from 'react-bulma-components/src/components/card';
+import { Form as Form$1, Element, Heading, Content, Notification, Card } from 'react-bulma-components';
 import PropTypes from 'prop-types';
 import utils from '@rjsf/utils';
 
-//import Button from 'react-bulma-components/src/components/button';
+//import { Button } from 'react-bulma-components';
 //const { getDefaultRegistry } = utils;
 //const { fields, widgets } = getDefaultRegistry();
 var widgets = {};

@@ -1,7 +1,7 @@
 import React from "react";
 import { WidgetProps } from "@rjsf/utils";
 import utils from "@rjsf/utils";
-import Form from 'react-bulma-components/src/components/form';
+import { Form } from 'react-bulma-components';
 
 const { localToUTC, utcToLocal } = utils;
 

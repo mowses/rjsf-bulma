@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Element from 'react-bulma-components/src/components/element';
-import Form from 'react-bulma-components/src/components/form';
+import { Element, Form } from 'react-bulma-components';
 
 function selectValue(value, selected, all) {
   const at = all.indexOf(value);

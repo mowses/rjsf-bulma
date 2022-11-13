@@ -1,6 +1,6 @@
 import { FieldProps } from '@rjsf/utils';
 import React from 'react';
-import Form from 'react-bulma-components/src/components/form';
+import { Form } from 'react-bulma-components';
 
 class AnyOfField extends React.Component<FieldProps> {
 

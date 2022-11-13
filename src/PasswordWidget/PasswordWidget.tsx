@@ -1,6 +1,6 @@
 import React from "react";
 import { WidgetProps } from "@rjsf/utils";
-import Form from 'react-bulma-components/src/components/form';
+import { Form } from 'react-bulma-components';
 
 const { Input } = Form;
 
